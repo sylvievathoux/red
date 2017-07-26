@@ -6,10 +6,11 @@ Red [
 #include %display-utils.red
 
 system/view/auto-sync?: off
+system/view/VID/GUI-rules/active?: no
 
 
-d-font: make font! [name: "calibri" size: 8 color: maroon anti-alias: yes]
-f-font: make font! [name: "calibri" size: 9 color: maroon anti-alias: yes]
+d-font: make font! [name: "calibri" size: 7 color: maroon anti-alias: yes]
+f-font: make font! [name: "calibri" size: 8 color: maroon anti-alias: yes]
 f-para: make para! [align: 'left v-align: 'middle]
 
 img: load to-file request-file/filter ["jpgs" "*.jpg" "jpegs" "*.jpeg" "pngs" "*.png" "bitmaps" "*.bmp"]
@@ -33,15 +34,15 @@ b-offset: 10x10
 c-offset: as-pair margins/x * 2 + b-size/x margins/y
 d-offset: c-offset + (c-size / 2) - (d-size / 2)
 t-offset: as-pair c-offset/x c-size/y + margins/y + 10
-button-size: as-pair box-width / 4 - 2 25
+button-size: as-pair box-width / 4 - 5 25
 
 G: d-offset - c-offset * iz / c-size
 H: d-size * iz / c-size
 
 draw-b: compose [line-width 1 pen black box -1x-1 (b-size) image img 1x1 (b-size - 1x1) crop (G) (H)]
 draw-c: compose [line-width 1 pen black box -1x-1 (c-size) image img 1x1 (c-size - 1x1)]
-draw-d: compose [line-width 3 pen orange box -1x-1 (d-size)] 
-draw-infoPanel: compose [pen gray line-width 1 box 1x1 (as-pair box-width - 1 163)]
+draw-d: compose [line-width 4 pen orange box -1x-1 (d-size)] 
+draw-infoPanel: compose [pen gray line-width 1 box 1x1 (as-pair box-width - 1 129)]
 
 string-sz: form svsz
 string-iz: form iz
@@ -60,9 +61,9 @@ win: layout [
 	title "Drag'n'zoom"
 	origin margins
 	space margins
-	style textInfo: text 230.230.230 80x16 font f-font para f-para
-	style button: button button-size font d-font ;font-size 8
-	style text: text 80
+	style textInfo: text 230.230.230 80x16 font f-font para f-para ;font-size 8
+	style button: button button-size font d-font ;font-size 7
+	style text: text 80 font-size 8
 	across
 	
 	b: base b-size all-over draw draw-b ;extra "b"
@@ -74,9 +75,9 @@ win: layout [
 	
 	at t-offset
 	infoPanel: panel [
-		size 250x450
+		size 250x600
 		origin 15x15
-		space 5x-6
+		space 5x-5
 		across
 		;text "Datas" bold font-size 9 pad 0x5
 		;return 
@@ -103,13 +104,16 @@ win: layout [
 		text "Screen size:" t7: textInfo string-sz
 		return
 		text "Rendered in:" t8: textInfo string-elapse
-		return across pad -15x15 space 1x0
-		button "Reload" font-color black [] button "Transform" font-color black [probe length? infoPanel/pane] button "Ceph" font-color black [] button font-color crimson "Quit" [quit]
+		return across pad -15x30 space 1x0
+		button "Reload" font-color black font-size 7 []
+		button "Transform" font-color black font-size 7 [probe length? infoPanel/pane]
+		button "Ceph" font-color black font-size 7 []
+		button font-color crimson font-size 7 "Quit" [quit]
 		return pad -15x10
-		text 250 italic {Scroll the mouse in any face or drag the orange gel to select an area to display}
+		text 250x150 {Scroll the mouse in any face or drag the orange gel to select an area to display}
 	]
-	return
-	button 80x25 "Quit" [quit]
+	;return
+	;button 80x25 "Quit" [quit]
 ]
 	
 
@@ -184,7 +188,7 @@ G: (d/offset - c-offset) * iz / c-size
 H: d-size * iz / c-size
 ;draw-infoPanel/7: as-pair box-width - 1 164 ;infoPanel/size/y - 110
 ;infoPanel/size
-append infoPanel/pane reduce make face! [size: 250x164 color: 255.255.0.220 type: 'base draw: draw-infoPanel]
+append infoPanel/pane reduce make face! [size: 250x130 color: 255.255.0.245 type: 'base draw: draw-infoPanel]
 
 view/flags/no-wait win [resize]
 t8/data: third now/time/precise - start-time

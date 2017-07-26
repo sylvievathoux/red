@@ -52,7 +52,7 @@ compute-sizes: function [
 	box-width [integer!]	"Size of the gel container (size of it's parent-face - set it as you need!)"
 	extra-pad [pair!]		"If needed, extra margins for fine tuning"
 	][
-	if not image? img [alert "Not an image!"]
+	if not image? img [print  "File error: not an image!"]
 	svsz: 	system/view/screens/1/size - extra-pad  			; OS screen-size
 	svr:	round/to 1.0 * svsz/x / svsz/y 0.01					; OS screen aspect ratio
 	iz: 	img/size											; image-sz
