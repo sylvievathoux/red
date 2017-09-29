@@ -110,7 +110,7 @@ win: layout [
 		button "Ceph" font-color black font-size 7 []
 		button font-color crimson font-size 7 "Quit" [quit]
 		return pad -15x10
-		text 250x150 {Scroll the mouse in any face or drag the orange gel to select an area to display}
+		text 250x150 {Scroll the mouse in both faces, drag either the image or the orange gel to select an area to display}
 	]
 	;return
 	;button 80x25 "Quit" [quit]
