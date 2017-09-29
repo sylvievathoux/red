@@ -3,7 +3,7 @@ Red [
 	;Config: [red-strict-check?: no]
 ]
 
-#include %display-utils.red
+#include %display-tools.red
 
 system/view/auto-sync?: off
 system/view/VID/GUI-rules/active?: no
