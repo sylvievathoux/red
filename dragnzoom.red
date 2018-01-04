@@ -1,6 +1,7 @@
 Red [
 	Needs: 'View
-	;Config: [red-strict-check?: no]
+	Config: [red-strict-check?: no]
+	Tested: [Win10 OSX]
 ]
 
 #include %display-tools.red
