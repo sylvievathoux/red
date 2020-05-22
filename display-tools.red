@@ -23,8 +23,8 @@ confine: func [
 limit: func [
 {
 ^(tab) Keeps gel's size within two sizes:
-^(tab) the parent's face one as the largest
-^(tab) and lim's as the smallest.
+^(tab) the parent's face as the largest,
+^(tab) lim's as the smallest.
 }
 	size [pair!] parent-size [pair!] lim
 	][
@@ -50,7 +50,7 @@ compute-sizes: function [
 }
 	img [image!]			"LOADed image file"
 	margins [pair!]			"Regular margins between faces"
-	box-width [integer!]	"Width of the gel's container (size of gel's parent-face). Set it as you need!"
+	box-width [integer!]		"Width of the gel's container (size of gel's parent-face). Set it as you need!"
 	extra-pad [pair!]		"If needed, extra margins for fine tuning"
 	][
 	if not image? img [print "File error - Not an image!"]
